@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# This script do a soft unplug and replug of the usb wifi device
+
 sudo bash <<'EOF'
 set -e
 shopt -s nullglob
