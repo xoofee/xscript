@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -e
+
+bashrc="$HOME/.bashrc"
+xsync_definition=$(cat <<'EOF'
+xsync() {
+    rsync -avhP --info=progress2 "$@"
+}
+EOF
+)
+
+if [[ -e "$bashrc" ]]; then
+    existing=$(cat -- "$bashrc")
+    if [[ $'\n'"$existing"$'\n' == *$'\n'"$xsync_definition"$'\n'* ]]; then
+        exit 0
+    fi
+fi
+
+printf '\n%s\n' "$xsync_definition" >> "$bashrc"
