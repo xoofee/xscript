@@ -1,3 +1,5 @@
+#!/bin/sh
+
 sudo bash <<'EOF'
 set -e
 shopt -s nullglob
